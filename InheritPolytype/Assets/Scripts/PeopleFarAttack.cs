@@ -22,11 +22,16 @@ public class PeopleFarAttack : PeopleTrack
 
     protected override void Track()
     {
+        if (target==null)
+        {
+            return;                                                         //如果目標為空值 跳出
+        }
+
         agent.SetDestination(target.position);
 
-        transform.LookAt(target);
+        transform.LookAt(target);                               //變形.看著目標
 
-        if (agent.remainingDistance <= stop)
+        if (agent.remainingDistance <= stop)            //如果代理器.距離 < 停止距離 就攻擊
         {
             Attack();
         }
